@@ -1,33 +1,88 @@
 body {
-	color: purple;
-	background-color:#28a745 !important;
-  
+  background-color: #5cb85c !important;
 }
 #header-nav {
-	background-color: gold;
+  background-color: gold;
+  border-radius: 0;
+  border: 0;
+
 }
 .navbar-brand h1 {
-	font-family: 'Ubuntu', sans-serif;
-	color:#28a745;
-
-
+  color: #5cb85c !important;
+  text-shadow: 1px 1px #666;
 }
-.navbar-brand a:hover , .navbar-brand a:focus {
-	text-decoration: none;
-}
+
 .menu {
-  padding:15px;
-  border: 1px solid black;
+  box-shadow: 2px 2px #666;
   background-color: green;
+  padding: 10px;
+  margin: auto;
   margin-bottom: 30px;
+  font-size: 16px;
+}
 
+.navbar-brand a:hover, .navbar-brand a:focus {
+  text-decoration: none;
+}
+
+.back-to-top {
+  color: #222;
+}
+
+.container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {
+  height: 80px;
+}
+
+button {
+  margin-top: 35px !important;
+  background-color: #5cb85c !important;
+  box-shadow: 1px 1px #666;
 }
 
 
+.navbar-default, .navbar-toggle {
+  border: transparent !important;
+}
+
+button:hover {
+  background-color: green !important;
+}
+
+span.icon-bar {
+  background-color: gold !important;
+}
 
 
+.item-list {
 
-/**************Large devices only***************/
+  padding-top: 5px;
+  font-size: 135%;
+
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: #333!important;
+}
+
+#nav-list a:hover {
+  color: #5cb85c !important;
+}
+
+#nav-list {
+  margin-top: 10px;
+}
+
+.container {
+  margin-bottom: 10px;
+}
+
+
+hr {
+  width: 75%;
+  border-top: 1px solid green !important;
+}
+
+/*************************Large devices only**********************/
 @media (min-width: 992px) {
   .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
     float: left;
@@ -116,3 +171,19 @@ body {
 
 
 
+/*<div id="collapsable-nav" class="collapse navbar-collapse">
+           <ul id="nav-list" class="nav navbar-nav navbar-right visible-xs">
+            <li class="text-center item-list">
+             <a href="#Chicken">Chicken</a>
+            </li>
+            <hr class="visible-xs">
+            <li class="text-center item-list">
+                <a href="#Beef">Beef</a>
+            </li>
+            <hr class="visible-xs">
+               <li class="text-center item-list">
+                <a href="#Fish">Fish</a>
+              </li>
+               <hr class="visible-xs">
+          </ul>
+        </div>*/
