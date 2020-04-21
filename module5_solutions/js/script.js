@@ -83,10 +83,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 showLoading("#main-content");
 $ajaxUtils.sendGetRequest(
   allCategoriesUrl, 
-  function (buildAndShowHomeHTML) {
-    document.querySelector("#main-content")
-      .innerHTML = buildAndShowHomeHTML;
-  },
+  buildAndShowHomeHTML,
   true); // Explicitly setting the flag to get JSON from server processed into an object literal
 });
 // *** finish **
@@ -101,17 +98,15 @@ function buildAndShowHomeHTML (categories) {
   $ajaxUtils.sendGetRequest(
     homeHtmlUrl,
     function (homeHtml) {
-      $ajaxUtils.sendGetRequest(
-        chooseRandomCategory,
-        function (chooseRandomCategory) {
-          var chosenCategoryShortName = 
-          buildAndShowHomeHTML(categories,homeHtml,chooseRandomCategory);
-          categoryShort = insertProperty(categoryShort, "chosenCategoryShortName", chosenCategoryShortName);
-          insertHtml("#main-content",chosenCategoryShortName);
-        },
-      true);
+      var chosenCategoryShortName = chooseRandomCategory(categories).short_name;
+      var homeHtmlToInsertIntoMainPage = insertProperty(homeHtml, "randomCategoryShortName", "'" +
+          chosenCategoryShortName + "'");
+      insertHtml("#main-content",homeHtmlToInsertIntoMainPage);
+    },
+    false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
+}
 
-      // TODO: STEP 2: Here, call chooseRandomCategory, passing it retrieved 'categories'
+// TODO: STEP 2: Here, call chooseRandomCategory, passing it retrieved 'categories'
       // Pay attention to what type of data that function returns vs what the chosenCategoryShortName
       // variable's name implies it expects.
       
@@ -127,19 +122,12 @@ function buildAndShowHomeHTML (categories) {
       // $dc.loadMenuItems('L')
       // Hint: you need to surround the chosen category short name with something before inserting
       // it into the home html snippet.
-      //
-      // var homeHtmlToInsertIntoMainPage = ....
 
 
       // TODO: STEP 4: Insert the the produced HTML in STEP 3 into the main page
       // Use the existing insertHtml function for that purpose. Look through this code for an example
       // of how to do that.
       // ....
-
-    },
-    false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
-}
-
 
 // Given array of category objects, returns a random category object.
 function chooseRandomCategory (categories) {
